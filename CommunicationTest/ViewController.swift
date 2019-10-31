@@ -37,6 +37,20 @@ class ViewController: UIViewController, WCSessionDelegate  {
         // 1. When a message is received from the watch, output a message to the UI
         // NOTE: Since session() runs in background, you cannot directly update UI from the background thread.
         // Therefore, you need to wrap any UI updates inside a DispatchQueue for it to work properly.
+        print("Phone: I received a message from watch: \(message)")
+               
+//               let name = message["name"] as! String
+//               let state = message["State"] as! String
+//               let  hungry = message["hungry"] as! String
+//
+//
+//               print(name)
+//               print(state)
+//
+        
+               
+        
+        
         DispatchQueue.main.async {
             self.outputLabel.insertText("\nMessage Received: \(message)")
         }
@@ -119,9 +133,7 @@ class ViewController: UIViewController, WCSessionDelegate  {
         }
         
         
-        
-        
-        
+    
     }
     @IBAction func caterpieButtonPressed(_ sender: Any) {
         print("You pressed the caterpie button")
@@ -138,8 +150,6 @@ class ViewController: UIViewController, WCSessionDelegate  {
             print("PHONE: Cannot reach watch")
             outputLabel.insertText("\nCannot reach watch")
         }
-        
-    
         
     }
     

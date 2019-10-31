@@ -48,21 +48,18 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         let name = message["name"] as! String
                 print(name)
       
-
-                if(name == "pikachu"){
+                 if(name == "pikachu"){
        
-                    pokemonImageView.setImageNamed("pikachu")
-                    self.nameLabel.setText("pikachu")
+                    self.pokemonImageView.setImageNamed("pikachu")
+                    self.nameLabel.setText("pikachu is playing")
+                  }
+                  if(name == "caterpie"){
+                    self.pokemonImageView.setImageNamed("caterpie")
+                    self.nameLabel.setText("caterpie is playing")
                 }
-                if(name == "caterpie"){
-                    pokemonImageView.setImageNamed("caterpie")
-                    self.nameLabel.setText("caterpie")
-                }
-               
+        
           }
     
-
-
     
     // MARK: WatchKit Interface Controller Functions
     // ----------------------------------
@@ -129,7 +126,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBAction func nameButtonPressed() {
         print("name button pressed")
         print("Give your pokemon a name")
-        
+        //segue goes to next screen
         
     
     }
@@ -151,7 +148,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 }
             
               else{
-               outputLabel.setText("Pokemon is dead" )
+               nameLabel.setText("Pokemon is dead" )
                  }
                 }
         }
