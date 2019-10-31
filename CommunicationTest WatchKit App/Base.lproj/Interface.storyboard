@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch38" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15400" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15400"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Helvetica.ttc">
-            <string>Helvetica-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
@@ -37,13 +30,14 @@
                         <label alignment="center" text="Albert is hungry" id="QdJ-Fj-LrR">
                             <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
                         </label>
-                        <group width="1" alignment="left" id="zVJ-eg-oyl">
+                        <group width="134" alignment="left" id="zVJ-eg-oyl">
                             <items>
                                 <button alignment="center" title="N" id="sSF-lA-oJl">
                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="system" pointSize="13"/>
                                     <connections>
                                         <action selector="nameButtonPressed" destination="AgC-eL-Hgc" id="eHT-Ns-0Sz"/>
+                                        <segue destination="TKJ-vR-82D" kind="push" id="7r9-Ym-A1M"/>
                                     </connections>
                                 </button>
                                 <button alignment="center" title="S" id="kff-c9-AJG">
@@ -113,4 +107,7 @@
             <point key="canvasLocation" x="562" y="382"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pokeball" width="64" height="64"/>
+    </resources>
 </document>

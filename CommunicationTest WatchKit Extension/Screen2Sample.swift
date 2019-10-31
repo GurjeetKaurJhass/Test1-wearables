@@ -4,7 +4,7 @@
 //
 //  Created by Parrot on 2019-10-31.
 //  Copyright © 2019 Parrot. All rights reserved.
-//                   
+//
 
 import Foundation
 import WatchKit
@@ -65,6 +65,19 @@ class Screen2Sample: WKInterfaceController, WCSessionDelegate {
     
     @IBAction func selectNameButtonPressed() {
         print("select name button pressed")
+        
+        let cannedResponses = ["albert", "pritesh", "mohammad", "emad"]
+        presentTextInputController(withSuggestions: cannedResponses, allowedInputMode: .plain) {
+            
+            (results) in
+            
+            if (results != nil && results!.count > 0) {
+                // 2. write your code to process the person's response
+                let userResponse = results?.first as? String
+                print(userResponse)
+                self.nameLabel.setText(userResponse)
+            }
+        }
     }
     
 
