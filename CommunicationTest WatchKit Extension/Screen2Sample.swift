@@ -60,7 +60,9 @@ class Screen2Sample: WKInterfaceController, WCSessionDelegate {
     // MARK: Actions
     @IBAction func startButtonPressed() {
         print("Start button pressed")
+        
     }
+    
     
     
     @IBAction func selectNameButtonPressed() {

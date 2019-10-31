@@ -12,7 +12,9 @@ import WatchConnectivity
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
-    
+    var numLoops = 0
+    var hunger = 0
+    var health = 100
     // MARK: Outlets
     // ---------------------
     @IBOutlet var messageLabel: WKInterfaceLabel!
@@ -59,10 +61,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         
     }
-    
+   
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+          
         
         
     }
@@ -108,20 +111,53 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         print("Give your pokemon a name")
         
         
-        
-
+    
     }
 
+   
     @IBAction func startButtonPressed() {
         print("Start button pressed")
-    }
+         
+        
+     if (numLoops % 5 == 0) {
+      hunger = hunger + 10
+      print(hunger)
+     outputLabel.setText("H: \(hunger), L: \(health)" )
+        if(hunger>80)
+        {
+              if(health>0 && health<=100) {
+                health = health - 5
+                outputLabel.setText("H: \(hunger), L: \(health)" )
+                }
+            
+              else{
+               outputLabel.setText("Pokemon is dead" )
+                 }
+                }
+            
+            
+            
+        }
+        
+    
+     }
+    
     
     @IBAction func feedButtonPressed() {
         print("Feed button pressed")
+        
+        hunger = hunger - 12
+         print(hunger)
+         outputLabel.setText("H: \(hunger), L: \(health)" )
+        
+        
     }
     
     @IBAction func hibernateButtonPressed() {
         print("Hibernate button pressed")
+        
+        
+        
     }
     
 }

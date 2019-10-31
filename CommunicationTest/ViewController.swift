@@ -102,7 +102,6 @@ class ViewController: UIViewController, WCSessionDelegate  {
     
     @IBAction func pokemonButtonPressed(_ sender: Any) {
         print("You pressed the pokemon button")
-        
         if (WCSession.default.isReachable) {
             let message = ["name": "Pokemon"]
             WCSession.default.sendMessage(message, replyHandler: nil)
@@ -137,8 +136,7 @@ class ViewController: UIViewController, WCSessionDelegate  {
             outputLabel.insertText("\nCannot reach watch")
         }
         
-        
-        
+    
         
     }
     
