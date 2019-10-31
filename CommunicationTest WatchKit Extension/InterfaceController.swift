@@ -12,11 +12,13 @@ import WatchConnectivity
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
+    var Screen2:[Screen2Sample] = []
     var numLoops = 0
     var hunger = 0
     var health = 100
     // MARK: Outlets
     // ---------------------
+   
     @IBOutlet var messageLabel: WKInterfaceLabel!
    
     // Imageview for the pokemon
@@ -26,23 +28,38 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     // Label for other messages (HP:100, Hunger:0)
     @IBOutlet var outputLabel: WKInterfaceLabel!
     
-    
-    
+
     // MARK: Delegate functions
     // ---------------------
 
     // Default function, required by the WCSessionDelegate on the Watch side
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         //@TODO
+        
     }
     
     // 3. Get messages from PHONE
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+       
         print("WATCH: Got message from Phone")
         // Message from phone comes in this format: ["course":"MADT"]
         let messageBody = message["name"] as! String
         messageLabel.setText(messageBody)
-    }
+        let name = message["name"] as! String
+                print(name)
+      
+
+                if(name == "pikachu"){
+       
+                    pokemonImageView.setImageNamed("pikachu")
+                    self.nameLabel.setText("pikachu")
+                }
+                if(name == "caterpie"){
+                    pokemonImageView.setImageNamed("caterpie")
+                    self.nameLabel.setText("caterpie")
+                }
+               
+          }
     
 
 
@@ -85,8 +102,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         if WCSession.default.isReachable {
             print("Attempting to send message to phone")
             self.messageLabel.setText("Sending msg to watch")
+            
+            var health1 = String(health)
+            var health2 = String(hunger)
             WCSession.default.sendMessage(
-                ["name" : "Pritesh"],
+               ["name":"name", "State":health1 , "Hungry":health2],
                 replyHandler: {
                     (_ replyMessage: [String: Any]) in
                     // @TODO: Put some stuff in here to handle any responses from the PHONE
@@ -134,11 +154,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                outputLabel.setText("Pokemon is dead" )
                  }
                 }
-            
-            
-            
         }
-        
     
      }
     
@@ -155,9 +171,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     @IBAction func hibernateButtonPressed() {
         print("Hibernate button pressed")
-        
-        
-        
-    }
-    
+        self.buttonPressed()
+}
 }
